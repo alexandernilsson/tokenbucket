@@ -70,9 +70,9 @@ func (t *TokenBucket) Take(icount int64) time.Duration {
 	return delay
 }
 
-func (t *TokenBucket) SetFillRate(rate time.Duration) {
+func (t *TokenBucket) SetFillInterval(fillInterval time.Duration) {
 	t.lock.Lock()
-	t.fillInterval = rate
+	t.fillInterval = fillInterval
 	t.lock.Unlock()
 }
 
