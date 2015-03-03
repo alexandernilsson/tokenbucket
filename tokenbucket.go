@@ -69,3 +69,15 @@ func (t *TokenBucket) Take(icount int64) time.Duration {
 	t.lock.Unlock()
 	return delay
 }
+
+func (t *TokenBucket) SetFillRate(rate time.Duration) {
+	t.lock.Lock()
+	t.fillInterval = rate
+	t.lock.Unlock()
+}
+
+func (t *TokenBucket) SetCapacity(capacity float64) {
+	t.lock.Lock()
+	t.capacity = capacity
+	t.lock.Unlock()
+}
